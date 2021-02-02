@@ -1,33 +1,26 @@
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Item from "./Item";
+import List from "./List";
 
 function App() {
   return (
-    <AnimateSharedLayout>
-      <motion.ul layout initial={{borderRadius:25}}><Item /> </motion.ul>
+    <AnimateSharedLayout type="crossfade">
+      <Router>
+        <Route path={["/:id", '/']} component={Store}/>
+      </Router>
     </AnimateSharedLayout>
   );
 }
 
 export default App;
 
-const Item = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggleOpen = () => setIsOpen(!isOpen)
-
+const Store = ({match}) => {
+  const {id} = match.params
   return (
-    <motion.li onClick={toggleOpen} initial={{borderRadius:10}}>
-      <motion.div className="avatar" layout />
-      <AnimatePresence>{isOpen && <Content />}</AnimatePresence>
-    </motion.li>
+    <>
+      <List selectedId={id}/>
+      <AnimatePresence>{id && <Item id={id} key="item" />}</AnimatePresence>
+    </>
   )
 }
-
-
-const Content = () => (
-  <motion.div layout initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
-    <div className="row" />
-    <div className="row" />
-    <div className="row" />
-  </motion.div>
-)
