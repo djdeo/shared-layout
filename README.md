@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 add `layout` property on the node about to change layout or expand
 
+[offcial examples](https://www.framer.com/api/motion/animate-shared-layout)
+
 ## Available Scripts
 
 In the project directory, you can run:
