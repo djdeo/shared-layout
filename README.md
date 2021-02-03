@@ -8,6 +8,10 @@ add `layout` property on the node about to change layout or expand
 
 [offcial examples](https://www.framer.com/api/motion/animate-shared-layout)
 
+## TODO
+
+- [] display bug
+
 ## Available Scripts
 
 In the project directory, you can run:
